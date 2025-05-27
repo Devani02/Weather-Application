@@ -55,5 +55,25 @@
     </div>
 
     <script src="script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector(".search-form");
+        const input = document.querySelector(".city-input");
+        
+        input.value = "Delhi";
+      
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+      
+          const city = input.value.trim();
+          if (city) {
+            fetchWeatherData(city);
+            input.value = "";
+          }
+        });
+        form.dispatchEvent(new Event("submit"));
+      });
+    </script>
   </body>
 </html>
